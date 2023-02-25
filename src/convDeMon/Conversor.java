@@ -22,7 +22,6 @@ public class Conversor {
 				if (n.equalsIgnoreCase("conversor de monedas")) {
 					Double monto = Double.parseDouble(JOptionPane.showInputDialog("ingrese el monto a cambiar"));
 
-					// Map<String, CambioNombre> montocambiado = new HashMap<>();
 					Curso1 curso = new Curso1();
 
 					curso.addAlumno("de peso a dolar", new CambioNombre(monto / 377, "dolares"));
@@ -68,11 +67,19 @@ public class Conversor {
 					JOptionPane.showMessageDialog(null, "son " + curso.getCambMap().get(mone));
 				}
 				salida = JOptionPane.showConfirmDialog(null, " desea volver al menu?");
+				if(salida==2){
+					do {
+					salida = JOptionPane.showConfirmDialog(null,
+							"ud ha decidido cancelar la operacion, desea volver al menu?");	
+					}while(salida ==2);
+				}
 
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
-				salida = JOptionPane.showConfirmDialog(null,
-						"ud ha decidido cancelar la operacion, desea volver al menu?");
+				do {
+					salida = JOptionPane.showConfirmDialog(null,
+							"ud ha decidido cancelar la operacion, desea volver al menu?");	
+					}while(salida ==2);
 			}
 		} while (salida == 0);
 		JOptionPane.showMessageDialog(null, "salir");
